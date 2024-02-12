@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saint-Valentin &#10084;</title> <!-- Utilisation de l'entité HTML pour le cœur -->
+  <style>
+    /* Style pour centrer le texte et les boutons */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column; /* Alignement vertical des éléments */
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px; /* Marge entre le texte et les boutons */
+    }
+    .button-container button {
+      margin: 0 10px; /* Marge entre les boutons */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    #ouiButton {
+      background-color: green;
+      color: white;
+    }
+    #nonButton {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path fill="red" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+</svg>
+
+<h1>Veux-tu être ma Valentine ?</h1>
+
+<div class="button-container">
+  <a href="invitation.html"><button id="ouiButton">Oui</button></a>
+  <button id="nonButton">Non</button>
+</div>
+
+<script>
+  // Fonction appelée lors du clic sur le bouton "Non"
+  document.getElementById("nonButton").addEventListener("click", function() {
+    document.getElementById("nonButton").style.display = "none"; // Masquer le bouton "Non"
+  });
+</script>
+
+</body>
+</html>
