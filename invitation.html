@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitation au rendez-vous &#10084;</title>
+    <title>Invitation au rendez-vous ❤️</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Pour éviter les barres de défilement */
         }
         .container {
+            position: relative;
+            z-index: 1; /* Pour empêcher l'animation de passer au-dessus du contenu */
             max-width: 600px;
             margin: 50px auto;
             text-align: center;
@@ -31,20 +34,57 @@
             color: red;
             font-size: 24px;
         }
+        /* Animation de multitude de cœurs */
+        @keyframes hearts-fall {
+            0% { transform: translateY(-50vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        .heart-fall {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            color: red;
+            animation: hearts-fall 10s linear infinite;
+            pointer-events: none; /* Empêche les cœurs de bloquer les clics sur le contenu */
+            z-index: 0; /* Met l'animation en arrière-plan */
+        }
     </style>
 </head>
 <body>
+    <!-- Animation de multitude de cœurs en arrière-plan -->
     <div class="container">
-        
         <div class="invitation">
             <div class="heart">❤️</div>
-            <h2>Invitation</h2>
-            <p>Date : 14 février 2024</p>
-            <p>Heure : 20h00</p>
-            <p>Lieu : Le Bistro Du Chanoine</p>
+            <h2>Menu</h2>
+            <h3>Entrée</h3>
+            <p>Profitez d'un petit-déjeuner comblé de viennoiseries et de jus.</p>
+            <h3>Plat</h3>
+            <p>Préparez votre plus belle toque pour m'accompagner préparer un merveilleux repas.</p>
+            <h3>Dessert</h3>
+            <p>Un délicieux repas vous attend, apprêtez vous de votre plus belle tenue.</p>
             <div class="heart">❤️</div>
         </div>
-        
     </div>
+    <!-- Générer plusieurs cœurs pour la multitude -->
+    <script>
+        // Nombre de cœurs à générer
+        const numberOfHearts = 50;
+        // Fonction pour générer un cœur aléatoirement
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-fall';
+            heart.innerHTML = '❤️';
+            document.body.appendChild(heart);
+            // Position aléatoire sur la page
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+        }
+        // Générer un certain nombre de cœurs
+        for (let i = 0; i < numberOfHearts; i++) {
+            createHeart();
+        }
+    </script>
 </body>
 </html>
