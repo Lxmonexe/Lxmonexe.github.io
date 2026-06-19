@@ -1,47 +1,722 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur notre site</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #007bff;
-        }
-        p {
-            text-align: center;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .cone-img {
-            display: block;
-            margin: 20px auto; /* Ajout de marge pour espacer l'image du texte */
-            max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas la largeur de son conteneur */
-            height: auto;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabin Blanchet — Ingénieur Électronique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE6D8;
+    --mocha-light: #C5B49A;
+    --mocha: #8B6F55;
+    --mocha-dark: #5C4535;
+    --espresso: #2E1F14;
+    --text: #3A2A1E;
+    --text-muted: #7A6655;
+    --text-hint: #A89580;
+    --border: rgba(139, 111, 85, 0.18);
+    --border-hover: rgba(139, 111, 85, 0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: var(--cream);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--espresso);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--espresso); }
+
+  /* HERO */
+  .hero {
+    padding: 7rem 2rem 5rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mocha);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 400;
+    color: var(--espresso);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--mocha);
+  }
+
+  .hero-lead {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    padding: 10px 22px;
+    border-radius: 2px;
+    transition: all 0.2s;
+    font-weight: 400;
+  }
+
+  .btn-primary {
+    background: var(--espresso);
+    color: var(--cream);
+    border: 1px solid var(--espresso);
+  }
+
+  .btn-primary:hover {
+    background: var(--mocha-dark);
+    border-color: var(--mocha-dark);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--espresso);
+    border: 1px solid var(--border-hover);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--mocha);
+    color: var(--mocha-dark);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mocha-light);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* COMPÉTENCES */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+  }
+
+  .skill-cell {
+    background: var(--cream);
+    padding: 1.5rem;
+  }
+
+  .skill-cell h3 {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mocha);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 12px;
+    background: var(--cream-dark);
+    color: var(--text-muted);
+    padding: 4px 10px;
+    border-radius: 1px;
+    border: 0.5px solid var(--border);
+  }
+
+  /* EXPÉRIENCE */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .timeline-item:first-child { padding-top: 0; }
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-date {
+    font-size: 12px;
+    color: var(--text-hint);
+    padding-top: 2px;
+    line-height: 1.5;
+  }
+
+  .timeline-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--espresso);
+    margin-bottom: 2px;
+  }
+
+  .timeline-content .company {
+    font-size: 13px;
+    color: var(--mocha);
+    margin-bottom: 0.7rem;
+  }
+
+  .timeline-content p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .timeline-content ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .timeline-content ul li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .timeline-content ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--mocha-light);
+    font-size: 12px;
+  }
+
+  /* PROJETS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--cream);
+    padding: 1.75rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+
+  .project-card:hover { background: var(--cream-dark); }
+
+  .project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .project-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--espresso);
+  }
+
+  .project-card .arrow {
+    font-size: 16px;
+    color: var(--mocha-light);
+    transition: transform 0.2s, color 0.2s;
+    line-height: 1;
+  }
+
+  .project-card:hover .arrow {
+    transform: translate(2px, -2px);
+    color: var(--mocha);
+  }
+
+  .project-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .project-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.25rem;
+  }
+
+  .lang-badge {
+    font-size: 11px;
+    color: var(--text-hint);
+    letter-spacing: 0.06em;
+  }
+
+  .year-badge {
+    font-size: 11px;
+    color: var(--text-hint);
+  }
+
+  /* FORMATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .edu-card {
+    border: 0.5px solid var(--border);
+    padding: 1.5rem;
+    background: var(--cream);
+  }
+
+  .edu-card .period {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mocha-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--espresso);
+    margin-bottom: 3px;
+  }
+
+  .edu-card .school {
+    font-size: 13px;
+    color: var(--mocha);
+    margin-bottom: 0.8rem;
+  }
+
+  .edu-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* LANGUES & INTÉRÊTS */
+  .row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .lang-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .lang-row:last-child { border-bottom: none; }
+
+  .lang-name {
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .lang-level {
+    font-size: 12px;
+    color: var(--text-hint);
+    letter-spacing: 0.05em;
+  }
+
+  .interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .interest-tag {
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 0.5px solid var(--border);
+    color: var(--text-muted);
+    background: var(--cream);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-hint);
+    letter-spacing: 0.05em;
+  }
+
+  footer a {
+    color: var(--mocha);
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--espresso); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .timeline-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .row-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenue</h1>
-        <p>Site en cours de construction</p>
-        <p>Vous pouvez accéder à mon cv <a href="CV_BLANCHET_Gabin.pdf" download>ici</a>.</p>
+
+<nav>
+  <div class="nav-logo">Gabin Blanchet</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="https://github.com/Lxmonexe" target="_blank" rel="noopener">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<div style="max-width:860px;margin:0 auto;padding:0 2rem;">
+  <div class="divider" style="margin-top:0;"></div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Ingénieur Électronique & Systèmes Numériques</p>
+  <h1>Conception matérielle,<br><em>du schéma au silicium.</em></h1>
+  <p class="hero-lead">
+    Étudiant-ingénieur à Polytech Dijon, spécialisé en conception de systèmes numériques et FPGA. 
+    Passionné par l'électronique embarquée, du PCB au contrôleur bas niveau.
+  </p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="https://github.com/Lxmonexe" target="_blank" rel="noopener">Voir GitHub ↗</a>
+    <a class="btn btn-secondary" href="https://www.linkedin.com/in/gabin-blanchet" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
+
+<div style="max-width:860px;margin:0 auto;padding:0 2rem;"><div class="divider"></div></div>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <p class="section-label">Compétences</p>
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <h3>Matériel</h3>
+      <div class="skill-tags">
+        <span class="tag">FPGA</span>
+        <span class="tag">Microcontrôleurs</span>
+        <span class="tag">PCB</span>
+        <span class="tag">Analogique</span>
+        <span class="tag">Numérique</span>
+        <span class="tag">Bancs de test</span>
+      </div>
     </div>
+    <div class="skill-cell">
+      <h3>Langages</h3>
+      <div class="skill-tags">
+        <span class="tag">VHDL</span>
+        <span class="tag">C / C++</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <h3>Logiciels</h3>
+      <div class="skill-tags">
+        <span class="tag">Vivado</span>
+        <span class="tag">Vitis</span>
+        <span class="tag">Questa</span>
+        <span class="tag">LabVIEW</span>
+        <span class="tag">Multisim</span>
+        <span class="tag">Qucs</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <h3>Environnement</h3>
+      <div class="skill-tags">
+        <span class="tag">Linux</span>
+        <span class="tag">Git</span>
+        <span class="tag">cocotb</span>
+        <span class="tag">VS Code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:860px;margin:0 auto;padding:0 2rem;"><div class="divider"></div></div>
+
+<!-- EXPÉRIENCE -->
+<section id="experience">
+  <p class="section-label">Expérience</p>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">Sept. 2025<br>Août 2026</div>
+      <div class="timeline-content">
+        <h3>Ingénieur Électronique — Alternance</h3>
+        <div class="company">Groupe SEB, Is-sur-Tille</div>
+        <ul>
+          <li>Veilles technologiques</li>
+          <li>Spécification, architecture et conception de cartes électroniques</li>
+          <li>Réalisation de prototypes et preuves de concept (PoC)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Avr. 2025<br>Août 2025</div>
+      <div class="timeline-content">
+        <h3>Stage Mobilité Internationale</h3>
+        <div class="company">HEIG-VD — Institut REDS, Yverdon-les-Bains, Suisse</div>
+        <ul>
+          <li>Étude et analyse de la norme ONFI (interface mémoire Flash)</li>
+          <li>Développement sur cible FPGA d'un contrôleur de mémoire en VHDL</li>
+          <li>Conception et déploiement d'un banc de test complet pour la validation IP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2021 — 2024<br>(étés)</div>
+      <div class="timeline-content">
+        <h3>Technicien Électricité — Intérim</h3>
+        <div class="company">EEITC, Châteauroux</div>
+        <ul>
+          <li>Installation de systèmes de sécurité incendie</li>
+          <li>Câblage de luminaires et équipements électriques</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div style="max-width:860px;margin:0 auto;padding:0 2rem;"><div class="divider"></div></div>
+
+<!-- PROJETS -->
+<section id="projets">
+  <p class="section-label">Projets</p>
+  <div class="projects-grid">
+
+    <a class="project-card" href="https://github.com/Firmin-ESIREM/obdrec" target="_blank" rel="noopener">
+      <div class="project-card-header">
+        <h3>OBDrec</h3>
+        <span class="arrow">↗</span>
+      </div>
+      <p>Tableau de bord automobile temps réel. Acquisition via prise OBD-II, relecture de trajets CSV et connexion aux données télémétrie du jeu Forza.</p>
+      <div class="project-card-footer">
+        <span class="lang-badge">Python</span>
+        <span class="year-badge">2022</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/Firmin-ESIREM/station-meteo" target="_blank" rel="noopener">
+      <div class="project-card-header">
+        <h3>Station météo</h3>
+        <span class="arrow">↗</span>
+      </div>
+      <p>Station météo embarquée : capteurs connectés à un Arduino, données transmises et hébergées sur Raspberry Pi. Interface web de visualisation.</p>
+      <div class="project-card-footer">
+        <span class="lang-badge">Python · C++ · HTML</span>
+        <span class="year-badge">2022</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/Lxmonexe/PolyNames" target="_blank" rel="noopener">
+      <div class="project-card-header">
+        <h3>PolyNames</h3>
+        <span class="arrow">↗</span>
+      </div>
+      <p>Jeu de société en ligne multijoueur (inspiré de Codenames). Backend Java avec API REST, base de données MariaDB et frontend HTML/JS.</p>
+      <div class="project-card-footer">
+        <span class="lang-badge">Java · JavaScript</span>
+        <span class="year-badge">2024</span>
+      </div>
+    </a>
+
+    <div class="project-card" style="cursor:default;">
+      <div class="project-card-header">
+        <h3>Historisation d'horizon artificiel</h3>
+      </div>
+      <p>Programmation complète d'un FPGA : sortie visuelle, sonore et système de sauvegarde des inclinaisons en mémoire. Réalisé à Polytech Dijon.</p>
+      <div class="project-card-footer">
+        <span class="lang-badge">VHDL</span>
+        <span class="year-badge">2024</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div style="max-width:860px;margin:0 auto;padding:0 2rem;"><div class="divider"></div></div>
+
+<!-- FORMATION -->
+<section id="formation">
+  <p class="section-label">Formation</p>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="period">2021 — 2026</div>
+      <h3>Diplôme d'Ingénieur</h3>
+      <div class="school">Polytech Dijon — Électronique & Systèmes Numériques</div>
+      <p>Systèmes numériques, FPGA, électronique analogique/numérique, traitement du signal, transmissions sans fil.<br><br>
+      Certification radioamateur <strong style="font-weight:500;color:var(--mocha)">F4MJU</strong></p>
+    </div>
+    <div class="edu-card">
+      <div class="period">2019 — 2021</div>
+      <h3>Baccalauréat Général</h3>
+      <div class="school">Lycée Blaise Pascal, Châteauroux</div>
+      <p>Mathématiques (option maths expertes), Physique-Chimie, Sciences de l'Ingénieur.</p>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:860px;margin:0 auto;padding:0 2rem;"><div class="divider"></div></div>
+
+<!-- LANGUES & INTÉRÊTS -->
+<section id="profil">
+  <p class="section-label">Profil</p>
+  <div class="row-grid">
+    <div>
+      <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mocha-light);margin-bottom:1rem;">Langues</p>
+      <div class="lang-list">
+        <div class="lang-row"><span class="lang-name">Français</span><span class="lang-level">Langue maternelle</span></div>
+        <div class="lang-row"><span class="lang-name">Anglais</span><span class="lang-level">C1 — TOEIC</span></div>
+        <div class="lang-row"><span class="lang-name">Allemand</span><span class="lang-level">B1</span></div>
+        <div class="lang-row"><span class="lang-name">Espagnol</span><span class="lang-level">Débutant</span></div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mocha-light);margin-bottom:1rem;">Intérêts</p>
+      <div class="interests-list">
+        <span class="interest-tag">Aéronautique (BIA)</span>
+        <span class="interest-tag">Radioamateur (F4MJU)</span>
+        <span class="interest-tag">Esprit d'entreprise</span>
+        <span class="interest-tag">Saxophone</span>
+        <span class="interest-tag">Piano</span>
+        <span class="interest-tag">Cinéma</span>
+        <span class="interest-tag">Randonnée</span>
+        <span class="interest-tag">Badminton</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="https://github.com/Lxmonexe" target="_blank" rel="noopener">github.com/Lxmonexe</a>
+  &nbsp;·&nbsp;
+  <a href="https://linkedin.com/in/gabin-blanchet" target="_blank" rel="noopener">LinkedIn</a>
+  &nbsp;·&nbsp;
+  <span>Polytech Dijon · Promotion 2026</span>
+</footer>
+
 </body>
 </html>
